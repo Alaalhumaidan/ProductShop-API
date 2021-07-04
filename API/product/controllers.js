@@ -19,7 +19,7 @@ exports.productFetch = (req, res) => {
     } else {
       //else give 404 product not found  
       res.status(404).json({message: "Product Not Found."});
-    };
+    }};
 
  exports.createProduct =  (req, res) => {
     const id = products.length +1;
@@ -43,5 +43,5 @@ exports.productFetch = (req, res) => {
     } else {
       res.status(404).json({ message: "Product not found" });
     }
-}};
+};
 
