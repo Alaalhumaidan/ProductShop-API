@@ -12,7 +12,7 @@ app.use(express.json());
 app.use("/product", productRoutes);
 const run = async () => {
     try {
-        await db.sequelize.authenticate();
+        await db.sequelize.sync();
         console.log("Connection successful");
         app.listen(8000, () => {
         console.log("The application is running on localhost:8000");
