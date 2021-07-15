@@ -22,6 +22,8 @@ fs
   })
   .forEach(file => {
     const model = require(path.join(__dirname, file))(sequelize, Sequelize.DataTypes);
+  //Sequelize.DataTypes);
+  
     db[model.name] = model;
   });
 
@@ -33,5 +35,17 @@ Object.keys(db).forEach(modelName => {
 
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
+
+//Model Relationships
+ db.Shop.hasMany(db.Product,{
+   foreignKey: "shopId",
+   allowNull: false,
+   as: "products",
+   foreignKey: "shopId",
+ }); 
+ db.Product.belongsTo(db.Shop, {
+   as: "shop",
+   foreignKey: "shopId",
+ });
 
 module.exports = db;
